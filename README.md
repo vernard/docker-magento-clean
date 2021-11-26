@@ -90,6 +90,11 @@ bin/mysql < db/db.sql # You can open phpMyAdmin at http://127.0.0.1:8080 after r
 bin/magento setup:upgrade
 
 bin/setup-domain magento.test
+
+# If you're on Windows, you'll have to manually add that domain in your hosts file
+# 1. Open Notepad as an administrator (Press Win key, type 'Notepad', right click it, Run as administrator)
+# 2. Open C:\Windows\System32\drivers\etc\hosts file
+# 3. Add "127.0.0.1 magento.test" at the end as a new line and save it (it won't save if you didn't open Notepad as an administrator)
 ```
 
 And you're done!

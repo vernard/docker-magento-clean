@@ -1,0 +1,7 @@
+src/
+.idea/
+.vscode/
+db/*.sql
+docker-compose.dev.yml
+docker-compose.override.yml
+/magento-*.tar.gz

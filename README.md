@@ -76,6 +76,8 @@ rm -rf src/
 rm magento-2.4.3-p1.tar.gz
 # 7. Go out of container's CLI
 exit
+# 8. Copy app/ folder in host to container
+docker-compose cp src/app/ phpfpm:/var/www/html/
 ```
 
 #### Step 5: Restore from database backup and run `setup:upgrade` command

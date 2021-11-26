@@ -35,10 +35,10 @@ git clone git@github.com:vernard/docker-magento-clean.git .
 
 #### Step 2: Setup `docker-compose.dev.yml` and `docker-compose.override.yml` files
 ```
-# For Linux OS
+# For Linux or Mac
 cp docker-compose.dev-linux.yml docker-compose.dev.yml
 
-# For Windows/Mac
+# For Windows
 cp docker-compose.dev-windows.yml docker-compose.dev.yml
 
 cp docker-compose.dev.yml docker-compose.override.yml
@@ -59,6 +59,23 @@ Before running this, make sure no other docker containers are running, or else y
 If you have other application (like XAMPP, WAMP, etc.) that uses port 80, 443, 3306 like Apache/Nginx, MySQL services -- please turn those off before continuing. 
 ```
 bin/start 
+
+# If you're on Windows, you must run the commands below to copy Magento code inside the container
+# 1. Copy the zipped Magento code into the container
+docker-compose cp magento-2.4.3-p1.tar.gz phpfpm:/var/www/html
+# 2. Go into container's CLI
+bin/bash
+# 3. Extract the magento code
+tar -zxf magento-2.4.3-p1.tar.gz
+# 4. Extracted files are under src/, we want to move them to ~/html
+#    Some folder/files may not be copied, that's okay.
+mv src/* .
+# 5. Remove the remaining src/ folder
+rm -rf src/
+# 6. Remove the zipped Magento code
+rm magento-2.4.3-p1.tar.gz
+# 7. Go out of container's CLI
+exit
 ```
 
 #### Step 5: Restore from database backup and run `setup:upgrade` command

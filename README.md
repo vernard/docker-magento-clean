@@ -3,26 +3,99 @@ This repository is used to create a fresh Magento 2.4.1-p1 installation.
 # Requirements
 You must have [docker](https://docker.com/) and [docker-compose](https://docs.docker.com/compose/install/) command installed to use this repository.
 
-It is highly recommended to use a unix-based system (Ubuntu, MacOS, Debian, etc.) because the setup is much easier, faster, and debugging code is also easier. 
+It is highly recommended to use a unix-based system (Ubuntu, MacOS, etc.) because the setup is much easier, faster, and debugging code is also easier. 
 
 Invest time in setting up an [Ubuntu](https://ubuntu.com/) machine or you can set your computer to dual-boot so you'll use Linux when coding.
 
-For Windows users:
-* [Docker Desktop](https://docs.docker.com/desktop/windows/install/)
-* [WSL](https://docs.docker.com/desktop/windows/wsl/) 
-* [Debian](https://www.microsoft.com/en-us/p/debian/9msvkqc78pk6)
+### For Windows users:
+1. Open CMD as administrator (Press Win key, type CMD, Run as administrator)
 
-For Mac users:
-* [Docker Desktop](https://docs.docker.com/desktop/windows/install/)
+2. Execute `wsl --install`
+
+3. Reboot PC
+
+4. Upon Reboot, you'll find that "Ubuntu" will run and you'll see this message:
+ "Installing, this may take a few minutes..."
+ 
+5. After that's done, it will ask you for a UNIX username and password
+
+6. Run "sudo apt update" on Ubuntu
+
+7. Download and install [Docker Desktop on Windows](https://docs.docker.com/desktop/windows/install/)
+    > Make sure the "Install required Windows component for WSL2" is checked
+ 
+8. Reboot PC
+
+9. Open Docker Desktop and accept terms if running for first time
+
+10. (optional) Go ahead with the tutorial if you want to learn Docker. Skip if you're already familiar.
+
+11. Double check that `docker` and `docker-compose` commands are installed properly. Run these commands:
+    ```
+    docker -v # This should return Docker's current version
+    docker-compose -v # This should return Docker Compose current version
+    ```
+12. Add your SSH keys in `~/.ssh` if you already have one. The `/mnt/c/` directory in Ubuntu is the C:/ partition in your Windows machine. The same applies if you have other partitions like D: 
+    ```
+    mkdir ~/.ssh
+    cp /mnt/c/Users/YOUR_USER/.ssh/id_rsa ~/.ssh/id_rsa # Replace YOUR_USER with your actual Windows user
+    cp /mnt/c/Users/YOUR_USER/.ssh/id_rsa.pub ~/.ssh/id_rsa.pub # Replace YOUR_USER with your actual Windows user
+    chmod 600 ~/.ssh/id_rsa
+    ```
+    
+    If you don't have an SSH key yet, you can generate one by running 
+    ```
+    ssh-keygen
+    ```
+    
+    After creating your key, make sure to add your public key to your [Github account](https://github.com/settings/keys). 
+13. Follow the "How to install" instructions below, but make sure your INSTALLATION_FOLDER is under /mnt/c or /mnt/d (That's C: or D: in your drive) so you can open them in your code editor.
 
 
-Meaning, if you're on Windows OS, you'll need to [install  WSL](https://docs.docker.com/desktop/windows/wsl/) (Windows Subsystem for Linux) and a unix-based command line like [Debian](https://www.microsoft.com/en-us/p/debian/9msvkqc78pk6#activetab=pivot:overviewtab).
+### For Linux users:
 
+Follow the Docker installation instructions here: https://docs.docker.com/engine/install/ubuntu/
+1. Set up the repository
+    ```
+    sudo apt-get update
+    sudo apt-get install \
+        ca-certificates \
+        curl \
+        gnupg \
+        lsb-release
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+    echo \
+      "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+      $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    ```
+2. Install Docker Engine
+    ```
+    sudo apt-get update
+    sudo apt-get install docker-ce docker-ce-cli containerd.io
+    ```
 
-> Do not move forward if `docker -v` and `docker-compose -v` doesn't work.
+3. Verify that docker is installed
+    ```
+    docker -v
+    ```
+
+4. Install Docker Compose by following these instructions: https://docs.docker.com/compose/install/
+    ```
+    sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    sudo chmod +x /usr/local/bin/docker-compose
+    docker-compose --version # Check if it's installed
+    ```
+
+### For Mac Users
+
+I haven't tried this so there's no documentation (feel free to add your Docker & Docker compose installation here)
+
+Here are the relevant links for installing Docker & Docker Compose on Mac.
+* https://docs.docker.com/desktop/mac/install/
+* https://docs.docker.com/compose/install/
 
 # How to install
-
+> Do not move forward if `docker -v` and `docker-compose -v` doesn't work.
 > These commands will only work for unix-based command line like Debian. Running these command via Windows CLI won't work.
 
 #### Step 1: Clone this repository to your local machine

@@ -67,7 +67,7 @@ cd db/
 tar -zxf db.sql.tar.gz
 cd ..
 
-bin/mysql < db/db.sql
+bin/mysql < db/db.sql # You can open phpMyAdmin at http://127.0.0.1:8080 after running this
 bin/magento setup:upgrade
 
 bin/setup-domain magento.test
@@ -75,7 +75,7 @@ bin/setup-domain magento.test
 
 And you're done!
 
-Visit `https://magento.test/admin` and use the following credentials.
+Visit [https://magento.test/admin](https://magento.test/admin) and use the following credentials.
 
 Username: john.smith
 
@@ -114,5 +114,24 @@ SocketGroup=docker
 WantedBy=sockets.target
 ```
 
-### 403 Forbidden
+##### 403 Forbidden
+
+If you're getting 403 Forbidden error when opening `https://bragan.test` then you should check the `nginx.conf` file inside the container. 
+
+If it's an empty file, copy the `nginx.conf.sample` to `nginx.conf` by running this command:
+
+```
+bin/bash # Go inside the container
+cp nginx.conf.sample nginx.conf
+exit # Exit CLI in the container
+
+docker-compose exec app nginx -s reload # Reload the nginx service to apply your changes
+```
+
+##### Clearing Cache
+
+In case you want to clear cache but can't run `bin/magento cache:clear`, you can clear cache directly in Redis container.
+```
+bin/redis redis-cli FLUSHALL # Should return "OK"
+```
 

@@ -213,7 +213,7 @@ WantedBy=sockets.target
 
 ##### 403 Forbidden
 
-If you're getting 403 Forbidden error when opening `https://bragan.test` then you should check the `nginx.conf` file inside the container. 
+If you're getting 403 Forbidden error when opening `https://magento.test` then you should check the `nginx.conf` file inside the container. 
 
 If it's an empty file, copy the `nginx.conf.sample` to `nginx.conf` by running this command:
 

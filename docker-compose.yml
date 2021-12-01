@@ -35,6 +35,7 @@ services:
       - "rabbitmq:172.17.0.1"
       ## Selenium support, replace "magento.test" with URL of your site
       - "magento.test:172.17.0.1"
+      - "host.docker.internal:host-gateway"
 
   phpfpm:
     image: markoshust/magento-php:7.4-fpm-11

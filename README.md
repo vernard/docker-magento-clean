@@ -212,7 +212,7 @@ SocketGroup=docker
 WantedBy=sockets.target
 ```
 
-##### 403 Forbidden
+### 403 Forbidden
 
 If you're getting 403 Forbidden error when opening `https://magento.test` then you should check the `nginx.conf` file inside the container. 
 
@@ -226,7 +226,7 @@ exit # Exit CLI in the container
 docker-compose exec app nginx -s reload # Reload the nginx service to apply your changes
 ```
 
-##### Clearing Cache
+### Clearing Cache
 
 In case you want to clear cache but can't run `bin/magento cache:clear`, you can clear cache directly in Redis container.
 ```

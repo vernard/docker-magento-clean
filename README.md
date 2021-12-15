@@ -11,6 +11,7 @@ Invest time in setting up an [Ubuntu](https://ubuntu.com/) machine or you can se
 1. Open CMD as administrator (Press Win key, type CMD, Run as administrator)
 
 2. Execute `wsl --install`
+> If you already have WSL installed, execute `wsl --install -d Ubuntu` instead to install Ubuntu alongside currently installed WSLs.
 
 3. Reboot PC
 

@@ -1,4 +1,4 @@
-This repository is used to create a fresh Magento 2.4.1-p1 installation.
+This repository is used to create a fresh Magento 2.4.1-p1 installation. This repo is based off from [Mark Shust](https://github.com/markshust/docker-magento)'s work. If you're interested how it's all set up, check out his repo. He also has a [free video guide](https://m.academy/courses/set-up-magento-2-development-environment-docker/) for it.
 
 # Requirements
 You must have [docker](https://docker.com/) and [docker-compose](https://docs.docker.com/compose/install/) command installed to use this repository.

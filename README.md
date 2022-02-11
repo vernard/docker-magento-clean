@@ -8,6 +8,10 @@ It is highly recommended to use a unix-based system (Ubuntu, MacOS, etc.) becaus
 Invest time in setting up an [Ubuntu](https://ubuntu.com/) machine or you can set your computer to dual-boot so you'll use Linux when coding.
 
 ### For Windows users:
+
+> There was extra information in Mark Shust's repository regarding how docker is setup using WSL2: https://github.com/markshust/docker-magento/discussions/372
+> It could provide useful information that could be missing in the instructions below.
+
 1. Open CMD as administrator (Press Win key, type CMD, Run as administrator)
 
 2. Execute `wsl --install`
